@@ -20,12 +20,20 @@ class Form
 	int getSignGrade();
 	int getExeGrade();
 	void beSigned(const Bureaucrat &ins);
-	class GradeTooLowExeption : std::exception
+	class GradeTooLowExeption : public std::exception
 	{
 		public:
 		const char *what() const throw()
 		{
-			return ("Grade too low to sign\n")
+			return ("Grade too low\n");
+		}
+	};
+	class GradeTooHighExeption : public std::exception
+	{
+		public:
+		const char *what() const throw()
+		{
+			return ("Grade too high\n");
 		}
 	};
 

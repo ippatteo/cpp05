@@ -36,5 +36,5 @@ class Bureaucrat
 	void Demotion();
 };
 
-std::ostream &operator <<(std::ostream &out, Bureaucrat &ins); // fuori perché il primo operando implicito se fosse una classe sarebbe della classe stessa, ma in questo caso è &out
+std::ostream &operator <<(std::ostream &out, const Bureaucrat &ins); // fuori perché il primo operando implicito se fosse in una classe sarebbe della classe stessa, ma in questo caso è &out
 #endif

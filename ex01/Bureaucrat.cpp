@@ -3,12 +3,12 @@
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat " << _name << " has been fired!" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade)
 {
-	std::cout << "Bureaucrat constructor called" << std::endl;
+	std::cout << "Bureaucrat " << _name <<   " has been hired!" << std::endl;
 	if (_grade < 1)
 		throw(GradeTooHighExeption());
 	else if (_grade > 150)
@@ -18,7 +18,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(g
 
 Bureaucrat::Bureaucrat(const Bureaucrat &ins): _name(ins._name), _grade(ins._grade)
 {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
+	std::cout << "Bureaucrat " << ins.getName() << " has been copied!" << std::endl;
 }
 std::string Bureaucrat::getName() const
 {

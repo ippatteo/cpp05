@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-// :: if to acess static class level operations, . is for objecxt level operations
+
 int main()
 {
 	Bureaucrat	a("FOO", 4);
@@ -8,7 +8,6 @@ int main()
 	std::cout << d.getName() << std::endl;
 	d = b;
 	std::cout << d.getName() << std::endl;
-
 	a.Promotion();
 	a.Promotion();
 	a.Promotion();
