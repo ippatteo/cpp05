@@ -2,6 +2,7 @@
 #define ATARGET_HPP
 #include "Warlock.hpp"
 
+class ASpell;
 
 class ATarget
 {

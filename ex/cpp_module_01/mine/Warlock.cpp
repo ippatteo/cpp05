@@ -6,7 +6,7 @@
 /*   By: mcamilli <mcamilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 20:53:56 by orekabe           #+#    #+#             */
-/*   Updated: 2025/05/28 18:50:35 by mcamilli         ###   ########.fr       */
+/*   Updated: 2025/05/28 20:00:46 by mcamilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void Warlock::introduce() const
 
 void Warlock::learnSpell(ASpell *obj)
 {
-	std::map<std::string, ASpell *>::iterator it = _book.find(obj.getName());
+	std::map<std::string, ASpell *>::iterator it = _book.find(obj->getName());
 	if (it == _book.end())
-		_book[obj.getName()] = obj;
+		_book[obj->getName()] = obj;
 }
 void Warlock::forgetSpell(std::string name)
 {
@@ -61,5 +61,5 @@ void Warlock::launchSpell(std::string name, ATarget &obj)
 {
 	std::map<std::string, ASpell *>::iterator it = _book.find(name);
 	if (it != _book.end())
-		_book[name].launch(obj);
+		_book[name]->launch(obj);
 }

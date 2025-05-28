@@ -2,6 +2,8 @@
 #define ASPELL_HPP
 #include "Warlock.hpp"
 
+class ATarget;
+
 class ASpell
 {
 	private:
