@@ -1,8 +1,9 @@
 #ifndef BUREAUCRAT_HPP
-  #define BUREAUCRAT_HPP
+	#define BUREAUCRAT_HPP
 
 	#include <string>
 	#include <iostream>
+	#include <exception>
 
 class Bureaucrat
 {
@@ -37,4 +38,5 @@ class Bureaucrat
 };
 
 std::ostream &operator <<(std::ostream &out, const Bureaucrat &ins); // fuori perché il primo operando implicito se fosse in una classe sarebbe della classe stessa, ma in questo caso è &out
+
 #endif
