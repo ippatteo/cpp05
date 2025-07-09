@@ -4,8 +4,11 @@
 
 	#include <string>
 	#include <iostream>
-	#include "Form.hpp"
-class Form;
+	#include <ctime>
+	#include <cstdlib>
+	#include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -30,7 +33,7 @@ class Bureaucrat
 	};
 	int getGrade() const; //per esser chiamata in una funzione const bureaucrat &b
 	std::string getName() const;
-	void signForm(Form &obj);
+	void signForm(AForm &obj);
 	void Promotion();
 	void Demotion();
 };

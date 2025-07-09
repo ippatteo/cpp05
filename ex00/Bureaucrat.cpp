@@ -1,5 +1,15 @@
 #include "Bureaucrat.hpp"
 
+const char* Bureaucrat::GradeTooLowExeption::what() const throw()
+{
+	return("grade too low!\n");
+}
+
+
+const char* Bureaucrat::GradeTooHighExeption::what() const throw()
+{
+	return("grade too High!\n");
+} 
 
 Bureaucrat::~Bureaucrat()
 {

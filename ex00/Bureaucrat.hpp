@@ -18,18 +18,12 @@ class Bureaucrat
 	class GradeTooHighExeption : public std::exception //public per ereditare tutto la exeption class
 	{
 			public:
-			const char* what() const throw() //si scvrive cosi perche dichiarato cosi in exeption, stiamo facendo un override
-			{
-				return("Grade too hight!\n");
-			}
+			virtual const char* what() const throw(); //si scvrive cosi perche dichiarato cosi in exeption, stiamo facendo un override
 	};
 	class GradeTooLowExeption : public std::exception
 	{
 			public:
-			const char* what() const throw()
-			{
-				return("grade too low!\n");
-			}
+			virtual const char* what() const throw();
 	};
 	int getGrade() const; //per esser chiamata in una funzione const bureaucrat &b
 	std::string getName() const;

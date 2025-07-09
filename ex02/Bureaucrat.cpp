@@ -70,7 +70,7 @@ void Bureaucrat::Demotion()
 		_grade++;
 }
 
-void Bureaucrat::signForm(Form &obj)
+void Bureaucrat::signForm(AForm &obj)
 {
 	
 	try

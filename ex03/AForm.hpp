@@ -1,13 +1,14 @@
 #pragma once
 
-#ifndef FORM_HPP
-	#define FORM_HPP
+#ifndef AForm_HPP
+	#define AForm_HPP
 
 #include "Bureaucrat.hpp"
+#include <ctime>
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 	const std::string _name;
@@ -15,15 +16,17 @@ class Form
 	const int _sign_grade;
 	const int _exe_grade;
 	public:
-	Form(std::string name, int sign, int exe);
-	Form(const Form &obj);
-	Form &operator =(const Form &obj);
-	~Form();
+	AForm(std::string name, int sign, int exe);
+	AForm(const AForm &obj);
+	AForm &operator =(const AForm &obj);
+	virtual ~AForm();
+	virtual void execute(Bureaucrat const &executor) const = 0;
 	std::string getName() const;
 	bool getIsSigned() const;
 	int getSignGrade() const;
 	int getExeGrade() const;
 	void beSigned(const Bureaucrat &ins);
+	bool executable(const Bureaucrat &ins) const;
 	class GradeTooLowExeption : public std::exception
 	{
 		public:
@@ -37,5 +40,5 @@ class Form
 
 };
 
-std::ostream &operator <<(std::ostream &out, const Form &obj);
+std::ostream &operator <<(std::ostream &out, const AForm &obj);
 #endif
