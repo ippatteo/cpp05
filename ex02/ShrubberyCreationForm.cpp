@@ -8,34 +8,32 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	if (this->getIsSigned() == false)
+		throw(NotSignedExeption());
+	if (!this->executable(executor))
+		throw(GradeTooLowExeption());
+	std::string nameFile;
+	const char* trueNameFile;
+	nameFile = this->_target + "_shrubery";
+	trueNameFile = nameFile.c_str();
+	std::ofstream file(trueNameFile);
+	if (file.is_open())
 	{
-		std::cout << "form is not signed!\n";
-		return;
+		file <<"     .       .      .     #       .           .             "<<std::endl;
+		file <<"        .      .         ###            .      .      .     "<<std::endl;
+		file <<"      .      .   \"#:. .:##\"##:. .:#\"  .      .              "<<std::endl;
+		file <<"       .     \"#:.    .:#\"###\"#:.    .:#\"  .        .       ."<<std::endl;
+		file <<"  .             \"#########\"#########\"        .        .     "<<std::endl;
+		file <<"        .    \"#:.  \"####\"###\"####\"  .:#\"   .       .        "<<std::endl;
+		file <<"     .     .  \"#######\"\"##\"##\"\"#######\"                  .  "<<std::endl;
+		file <<"                .\"##\"#####\"#####\"##\"           .      .     "<<std::endl;
+		file <<"    .   \"#:. ...  .:##\"###\"###\"##:.  ... .:#\"     .         "<<std::endl;
+		file <<"    .    .     \"#####\"\"#######\"\"#####\"    .      .          "<<std::endl;
+		file <<"            .     \"      000      \"    .     .              "<<std::endl;
+		file <<"       .         .   .   000     .        .       .          "<<std::endl;
+		file <<".. .. ..................O000O........................ ......"<<std::endl;
+		file.close();
 	}
-	try
-	{
-		std::string nameFile;
-		const char* trueNameFile;
-		this->executable(executor);
-		nameFile = this->_target + "_shruberry";
-		trueNameFile = nameFile.c_str();
-		std::ofstream file(trueNameFile);
-			if (file.is_open())
-			{
-				file <<"          .     .  .   ^^^    .          .         "<<std::endl;
-				file <<"          .     .  .  ^^^^^    .          .         "<<std::endl;
-				file <<"          .     .  .^^^^^^^^^^   .          .         "<<std::endl;
-				file <<"          .     .  .   ^^^    .          .         "<<std::endl;
-				file <<"          .     .  .   ^^^    .          .         "<<std::endl;
-				
-				file.close();
-			}
-			else
-				std::cout<<"Error the file can't be opened"<<std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << "this form is not executable by " << executor.getName() << ": " << e.what() << '\n';
-	}
+	else
+		throw std::runtime_error("ShrubberyCreationForm: cannot create file");
 }
 

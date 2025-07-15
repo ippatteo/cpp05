@@ -5,7 +5,7 @@ AForm::AForm(std::string name, int sign, int exe) : _name(name) , _signed(false)
 	if (this->_exe_grade > 150 || this->_sign_grade > 150)
 		throw (GradeTooLowExeption());
 	if (this->_exe_grade < 1 || this->_sign_grade < 1)
-		throw(GradeTooLowExeption());
+		throw(GradeTooHighExeption());
 }
 const char *AForm::GradeTooLowExeption::what() const throw()
 {
@@ -16,6 +16,16 @@ const char *AForm::GradeTooHighExeption::what() const throw()
 {
 	return ("Grade too high\n");
 }
+
+const char* AForm::NotSignedExeption::what() const throw()
+{
+	return("Form not Signed!\n");
+} 
+
+const char* AForm::RobotomyFailed::what() const throw()
+{
+	return("Robotomy request failed, now you're a poufiasse\n");
+} 
 
 AForm::~AForm()
 {
@@ -62,7 +72,7 @@ void AForm::beSigned(const Bureaucrat &ins)
 bool AForm::executable(const Bureaucrat &ins) const
 {
 	if (ins.getGrade() < this->_exe_grade)
-		throw(GradeTooLowExeption());
+		return(false);
 	return(true);
 }
 

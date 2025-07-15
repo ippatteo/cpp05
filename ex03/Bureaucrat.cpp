@@ -10,6 +10,9 @@ const char* Bureaucrat::GradeTooHighExeption::what() const throw()
 {
 	return("grade too High!\n");
 } 
+
+
+
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Bureaucrat " << _name << " has been fired!" << std::endl;
@@ -81,5 +84,18 @@ void Bureaucrat::signForm(AForm &obj)
 	catch(const std::exception& e)
 	{
 		std::cout << this->_name << " couldn’t sign " << obj.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout <<  this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "this form is not executable by " << this->getName() << ": " << e.what() << '\n';
 	}
 }

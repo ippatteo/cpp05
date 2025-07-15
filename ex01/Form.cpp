@@ -5,7 +5,7 @@ Form::Form(std::string name, int sign, int exe) : _name(name) , _signed(false), 
 	if (this->_exe_grade > 150 || this->_sign_grade > 150)
 		throw (GradeTooLowExeption());
 	if (this->_exe_grade < 1 || this->_sign_grade < 1)
-		throw(GradeTooLowExeption());
+		throw(GradeTooHighExeption());
 }
 const char *Form::GradeTooLowExeption::what() const throw()
 {

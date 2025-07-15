@@ -36,6 +36,7 @@ class Bureaucrat
 	void signForm(AForm &obj);
 	void Promotion();
 	void Demotion();
+	void executeForm(AForm const & form);
 };
 
 std::ostream &operator <<(std::ostream &out, const Bureaucrat &ins); // fuori perché il primo operando implicito se fosse in una classe sarebbe della classe stessa, ma in questo caso è &out

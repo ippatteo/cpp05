@@ -37,6 +37,16 @@ class AForm
 		public:
 		virtual const char *what() const throw();
 	};
+	class NotSignedExeption : public std::exception
+	{
+			public:
+			virtual const char* what() const throw();
+	};
+	class RobotomyFailed : public std::exception
+	{
+			public:
+			virtual const char* what() const throw();
+	};
 
 };
 
