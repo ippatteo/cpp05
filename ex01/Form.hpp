@@ -24,12 +24,12 @@ class Form
 	int getSignGrade() const;
 	int getExeGrade() const;
 	void beSigned(const Bureaucrat &ins);
-	class GradeTooLowExeption : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
 		virtual const char *what() const throw();
 	};
-	class GradeTooHighExeption : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
 		virtual const char *what() const throw();

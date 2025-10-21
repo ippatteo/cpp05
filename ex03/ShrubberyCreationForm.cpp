@@ -8,9 +8,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	if (this->getIsSigned() == false)
-		throw(NotSignedExeption());
+		throw(NotSignedException());
 	if (!this->executable(executor))
-		throw(GradeTooLowExeption());
+		throw(GradeTooLowException());
 	std::string nameFile;
 	const char* trueNameFile;
 	nameFile = this->_target + "_shrubery";

@@ -1,4 +1,4 @@
-// Intern.cpp
+
 #include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"

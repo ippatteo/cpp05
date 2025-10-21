@@ -26,7 +26,7 @@ int main()
 	{
 		b.Demotion();
 	}
-	catch (const  std::exception &e)
+	catch (const  std::exception &e) //exception è la classe base di tutte le eccezioni, catch prende tutte le eccezioni che non sono state catturate prima
 	{
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
@@ -34,7 +34,7 @@ int main()
 	{
 		Bureaucrat  d("Pippo", 0);
 	}
-	catch (const Bureaucrat::GradeTooHighExeption& e)
+	catch (const Bureaucrat::GradeTooHighException& e) // prende solo gli errori di classe ¨gradetoolow¨
 	{
 		std::cerr << "Exception grade too high catched: Pippo " << e.what() << std::endl;
 	}
@@ -42,13 +42,19 @@ int main()
 	{
 		c.Demotion();
 	}
-	catch (const Bureaucrat::GradeTooHighExeption& e)
+	catch (const Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << "Exception grade too high catched: " << c.getName() << " " << e.what() << std::endl;
 	}
-	catch (const Bureaucrat::GradeTooLowExeption& e)
+	catch (const Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << "Exception grade too low catched: " << c.getName() << " " << e.what() << std::endl;
+	}
+
+	try {
+		a.Promotion();
+	} catch (const std::exception &e) {
+		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 	return (0);
 }

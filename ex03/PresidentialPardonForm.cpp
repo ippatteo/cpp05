@@ -8,9 +8,9 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	if (this->getIsSigned() == false)
-		throw(NotSignedExeption());
+		throw(NotSignedException());
 	if (!this->executable(executor))
-		throw(GradeTooLowExeption());		
+		throw(GradeTooLowException());
 	std::cout<<"mr "<< this->_target <<" has been pardoned by Zaphod Beeblebrox"<<std::endl;
 }
 

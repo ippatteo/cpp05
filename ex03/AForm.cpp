@@ -3,29 +3,29 @@
 AForm::AForm(std::string name, int sign, int exe) : _name(name) , _signed(false), _sign_grade(sign), _exe_grade(exe)
 {
 	if (this->_exe_grade > 150 || this->_sign_grade > 150)
-		throw (GradeTooLowExeption());
+		throw (GradeTooLowException());
 	if (this->_exe_grade < 1 || this->_sign_grade < 1)
-		throw(GradeTooHighExeption());
+		throw(GradeTooHighException());
 }
-const char *AForm::GradeTooLowExeption::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low\n");
 }
 
-const char *AForm::GradeTooHighExeption::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high\n");
 }
 
-const char* AForm::NotSignedExeption::what() const throw()
+const char* AForm::NotSignedException::what() const throw()
 {
 	return("Form not Signed!\n");
-} 
+}
 
 const char* AForm::RobotomyFailed::what() const throw()
 {
 	return("Robotomy request failed, now you're a poufiasse\n");
-} 
+}
 
 AForm::~AForm()
 {
@@ -66,8 +66,8 @@ void AForm::beSigned(const Bureaucrat &ins)
 {
 	if (ins.getGrade() <= this->_sign_grade)
 		this->_signed = true;
-	else 
-		throw(GradeTooLowExeption());
+	else
+		throw(GradeTooLowException());
 }
 bool AForm::executable(const Bureaucrat &ins) const
 {

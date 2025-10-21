@@ -20,13 +20,13 @@ class Bureaucrat
 		Bureaucrat(const std::string grade, int name); // const costringe a usare una lista di inizializzazione, piu pulita
 		Bureaucrat(const Bureaucrat &ins);
 		Bureaucrat& operator = (const Bureaucrat &ins); //equal op overload
-	class GradeTooHighExeption : public std::exception //public per ereditare tutto la exeption class
+	class GradeTooHighException : public std::exception //public per ereditare tutto la exeption class
 	{
 			public:
 			virtual const char* what() const throw(); //si scvrive cosi perche dichiarato cosi in exeption, stiamo facendo un override, è virtuale dal padre ma lo mettiamo lo stesso per sicurezza
-		
+
 	};
-	class GradeTooLowExeption : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 			public:
 			virtual const char* what() const throw();

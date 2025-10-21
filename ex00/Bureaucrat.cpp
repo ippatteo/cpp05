@@ -1,15 +1,15 @@
 #include "Bureaucrat.hpp"
 
-const char* Bureaucrat::GradeTooLowExeption::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return("grade too low!\n");
 }
 
 
-const char* Bureaucrat::GradeTooHighExeption::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return("grade too High!\n");
-} 
+}
 
 Bureaucrat::~Bureaucrat()
 {
@@ -20,9 +20,9 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(g
 {
 	std::cout << "Bureaucrat " << _name <<   " has been hired!" << std::endl;
 	if (_grade < 1)
-		throw(GradeTooHighExeption());
+		throw(GradeTooHighException());
 	else if (_grade > 150)
-		throw(GradeTooLowExeption());
+		throw(GradeTooLowException());
 
 }
 
@@ -58,7 +58,7 @@ std::ostream& operator << (std::ostream &out, Bureaucrat const &ins)
 void Bureaucrat::Promotion()
 {
 	if (_grade - 1 < 1)
-		throw(GradeTooHighExeption());
+		throw(GradeTooHighException());
 	else
 		_grade--;
 }
@@ -66,7 +66,7 @@ void Bureaucrat::Promotion()
 void Bureaucrat::Demotion()
 {
 	if (_grade + 1 > 150)
-		throw(GradeTooLowExeption());
+		throw(GradeTooLowException());
 	else
 		_grade++;
 }

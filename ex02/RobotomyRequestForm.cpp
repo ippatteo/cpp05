@@ -8,9 +8,9 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRe
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	if (this->getIsSigned() == false)
-		throw(NotSignedExeption());
+		throw(NotSignedException());
 	if (!this->executable(executor))
-		throw(GradeTooLowExeption());
+		throw(GradeTooLowException());
 	if (rand() % 2)
 		throw(RobotomyFailed());
 	else

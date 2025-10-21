@@ -27,17 +27,17 @@ class AForm
 	int getExeGrade() const;
 	void beSigned(const Bureaucrat &ins);
 	bool executable(const Bureaucrat &ins) const;
-	class GradeTooLowExeption : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
 		virtual const char *what() const throw();
 	};
-	class GradeTooHighExeption : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
 		virtual const char *what() const throw();
 	};
-	class NotSignedExeption : public std::exception
+	class NotSignedException : public std::exception
 	{
 			public:
 			virtual const char* what() const throw();

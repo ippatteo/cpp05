@@ -1,44 +1,41 @@
-#include <iostream>
+#include "Intern.hpp"
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include <iostream>
 
 int main() {
-    std::cout << "=== Testing Bureaucrat operator<< ===" << std::endl;
-    try {
-        Bureaucrat high("HighGrade", 1);
-        Bureaucrat low("LowGrade", 150);
-        std::cout << high << std::endl;
-        std::cout << low << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << "Unexpected exception: " << e.what() << std::endl;
-    }
+	try {
+		Bureaucrat boss("Alice", 1);
+		Intern someRandomIntern;
 
-    std::cout << "\n=== Testing AForm operator<< on derived forms ===" << std::endl;
-    try {
-        ShrubberyCreationForm shrub("Home");
-        RobotomyRequestForm robot("Marvin");
-        PresidentialPardonForm pardon("Trillian");
+		AForm* form1 = someRandomIntern.makeForm("shrubbery creation", "Garden");
+		AForm* form2 = someRandomIntern.makeForm("robotomy request", "Bender");
+		AForm* form3 = someRandomIntern.makeForm("presidential pardon", "Fry");
+		AForm* form4 = someRandomIntern.makeForm("invalid form", "Nobody"); // Should return NULL or throw
 
-        std::cout << shrub << std::endl;
-        std::cout << robot << std::endl;
-        std::cout << pardon << std::endl;
+		std::cout << "\n--- Signing and Executing Forms ---\n" << std::endl;
 
-        // Sign forms to change their state
-        Bureaucrat signer("Signer", 1);
-        shrub.beSigned(signer);
-        robot.beSigned(signer);
-        pardon.beSigned(signer);
+		if (form1) {
+			boss.signForm(*form1);
+			boss.executeForm(*form1);
+			delete form1;
+		}
+		if (form2) {
+			boss.signForm(*form2);
+			boss.executeForm(*form2);
+			delete form2;
+		}
+		if (form3) {
+			boss.signForm(*form3);
+			boss.executeForm(*form3);
+			delete form3;
+		}
+		if (form4) {
+			std::cout << "ERROR: form4 should not be created!" << std::endl;
+			delete form4;
+		}
 
-        std::cout << "\nAfter signing:" << std::endl;
-        std::cout << shrub << std::endl;
-        std::cout << robot << std::endl;
-        std::cout << pardon << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << "Unexpected exception: " << e.what() << std::endl;
-    }
-
-    return 0;
+	} catch (std::exception& e) {
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	return 0;
 }
